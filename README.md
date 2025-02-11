@@ -2,18 +2,21 @@
 
 ## 1. Ensure Local Development is Stable
 - Verify that your web app or website is working correctly on your local machine.
+- OR Take below Repo's for Testing
 - HTML -  `git clone git@github.com:suhailroushan13/htmlCalci.git`
 - React - `git clone git@github.com:suhailroushan13/reactCalci.git`
 
 ## 2. Push Code to GitHub
 - Create a GitHub repository.
+- For HTML follow these Steps : https://upload.suhail.app/uploads/i7NuS8M.txt
+- For React follow these Steps : https://upload.suhail.app/uploads/eqTsdG8.txt
 - Push the code to GitHub without including `node_modules`.
 
 ## 3. Update GitHub Repository Details
+- Open your GitHub Repo On Right Side Click On Settings Icon
 - Add a proper **description**.
-- Add a **URL**.
+- Add a **URL**. same of Repo URL copy from top URL Box
 - Add relevant **keywords**.
-- Create a `README.md` file with project details.
 
 ## 4. Purchase a Domain (Compare Prices)
 - Namecheap
@@ -60,10 +63,11 @@
    ```sh
    sudo nano /etc/sudoers
    ```
-   Add below admin user:
+   Add below admin user or any where in the file
    ```sh
    suhail ALL=(ALL) ALL
    ```
+   Then save (`Ctrl + O`, Enter, `Ctrl + X`).
 3. Assign sudo privileges:
    ```sh
    usermod -a -G sudo suhail
@@ -76,22 +80,18 @@
    ```sh
    ssh-keygen -t ed25519 -C "your-email@example.com"
    ```
-   Press Enter four times.
+# Press Enter 4 times.
 2. Copy the public key:
    ```sh
    cd .ssh
    cat id_ed25519.pub
    ```
 3. Go to **GitHub** → **Settings** → **SSH & GPG Keys** → **New SSH Key**.
-4. Paste the key and save.
+4. Paste the key and add title as today's date and save.
 5. Configure Git:
    ```sh
    git config --global user.name "your-github-username"
    git config --global user.email "your-email@example.com"
-   ```
-6. Clone the repository:
-   ```sh
-   git clone <ssh-url>
    ```
 
 ## 11. Connect Cloud Server via SSH on WSL/Windows
