@@ -84,6 +84,7 @@
 2. Copy the public key:
    ```sh
    cd .ssh
+   ls
    cat id_ed25519.pub
    ```
 3. Go to **GitHub** → **Settings** → **SSH & GPG Keys** → **New SSH Key**.
@@ -95,23 +96,78 @@
    ```
 
 ## 11. Connect Cloud Server via SSH on WSL/Windows
-1. On WSL/Windows:
+
+
+## Step 1: Check for `.ssh` Folder in Windows
+1. Open **Command Prompt (cmd)**.
+2. Type the following command to navigate to the SSH directory:
    ```sh
-   cd .ssh
-   cat id_ed25519.pub
+   cd %USERPROFILE%\.ssh
    ```
-2. Copy the public key and add it to **authorized_keys** in your cloud server:
+3. If the folder does not exist, create SSH keys:
+   ```sh
+   ssh-keygen -t ed25519 -C "your-email@example.com"
+   ```
+   - Press **Enter** 4 times to accept the default settings.
+
+## Step 2: Copy the Public Key
+1. Display the public key:
+   ```sh
+   dir
+   type id_ed25519.pub
+   ```
+2. Copy the key.
+
+## Step 3: Add the Public Key to Your Cloud Server
+1. Open your cloud provider’s terminal or connect via another method.
+2. Navigate to the `.ssh` directory:
    ```sh
    cd ~/.ssh
+   ls
+   ```
+3. Ensure the `authorized_keys` file exists:
+   ```sh
    touch authorized_keys
    nano authorized_keys
    ```
-   Paste the key, save (`Ctrl + O`, Enter, `Ctrl + X`).
-3. Configure SSH in terminal settings:
-   - Add a new profile in the terminal.
-   - Set command: `ssh username@your-cloud-ip`
+4. Paste the copied public key, save (`Ctrl + O`, Enter, `Ctrl + X`).
+5. Close the cloud terminal tab.
+
+## Step 4: Configure SSH in Windows Terminal Preview
+
+1. **Open Windows Terminal Preview**.
+2. Click on the **top dropdown menu**.
+3. Select **Settings**.
+4. On Left Scroll down and **Add a new Profile**.
+5. **Duplicate Ubuntu Profile** and rename it as `Cloud Server`.
+6. Set the Command Line to:
+   ```sh
+   ssh username@your-cloud-ip
+   ```
+7. Save the settings.
+8. Close the Terminal
+
+## Step 5: Connect to the Cloud Server
+1. Open **Windows Terminal Preview**.
+2. Click on the **dropdown menu** and select `Cloud Server`.
+3. Enter `yes` when prompted.
+4. You are now connected to the cloud server.
+
+
+
+
+
+
+
 
 ## 12. Install Default Packages
+1.  
+```sh
+cd
+touch script.sh
+nano script.sh
+```
+2. Copy below all commands and paste it in script.sh
 ```sh
 sudo apt install -y git net-tools
 sudo timedatectl set-timezone Asia/Kolkata
@@ -126,40 +182,43 @@ sudo apt-get install -y manpages-dev
 sudo apt full-upgrade -y
 sudo apt-get autoremove -y
 ```
+3. Save (`Ctrl + O`, Enter, `Ctrl + X`).
+
+4. Run the below command 
+```sh
+   bash script.sh
+```
+ 
 
 ## 13. Install Node.js
+
+
+
 1. Install NVM:
    ```sh
+   cd
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
    ```
-2. Close and reopen terminal.
+# Close and Reopen terminal.
 3. Install Node.js:
    ```sh
    nvm install 22
    node -v
    npm -v
+   # To Install Nodemon & pm2
+   npm i -g nodemon pm2
    ```
 
-## 14. Clone Project and Set Up Nginx
-1. Clone the project:
-   ```sh
-   git clone <ssh-url>
-   ```
-2. Install dependencies:
-   ```sh
-   npm install
-   ```
-3. Install **Nodemon** globally:
-   ```sh
-   npm i -g nodemon
-   ```
 
 ## 15. Add Domain and Update DNS
+
 1. Open **DigitalOcean** → **Networking** → **Add Domain**.
 2. Add your domain and note the **NS records**.
-3. Add two A records (`www` and `@`) pointing to your **Cloud IP**.
+3. Add two A records (`www` and `@`) pointing to your **Cloud IP**.  
+   ![DNS Settings](https://upload.suhail.app/uploads/-9AsXUE.png)
 4. Update your **Domain DNS Settings** with the cloud NS records.
-5. Check updates using **dnschecker.org**.
+5. Check updates using [dnschecker.org](https://dnschecker.org).
+
 
 ## 16. Configure Nginx
 1. Switch to root user:
