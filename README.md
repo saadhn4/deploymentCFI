@@ -221,6 +221,7 @@ sudo apt-get autoremove -y
 
 
 ## 16. Configure Nginx
+0. Open Windows Terminal Preview Select Cloud Server
 1. Switch to root user:
    ```sh
    sudo su
