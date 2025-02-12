@@ -99,7 +99,6 @@
  (We have to copy windows .ssh public key and paste in cloud .ssh in a file name called authorized_keys )
 
 ## Step 1: Check for `.ssh` Folder in Windows
-()
 1. Open **Command Prompt (cmd)**.
 2. Type the following command to navigate to the SSH directory:
    ```sh
