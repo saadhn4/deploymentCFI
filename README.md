@@ -122,7 +122,9 @@
 1. Open your cloud provider’s terminal or connect via another method.
 2. Navigate to the `.ssh` directory:
    ```sh
-   cd ~/.ssh
+   exit
+   cd
+   cd .ssh
    ls
    ```
 3. Ensure the `authorized_keys` file exists:
