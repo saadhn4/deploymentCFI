@@ -6,7 +6,7 @@
 2. **Select Cloud Server** from the terminal options.
 3. **Check and Note IP Address**
    ```sh
-   ipconfig
+   ifconfig
    ```
    - Look for the network adapter connected to your cloud instance.
    - Note the IP address for later use.
@@ -26,6 +26,7 @@
 3. **Create a New Nginx Configuration File**
    ```sh
    cd /etc/nginx/sites-available
+   sudo rm -rf *
    sudo touch domains
    ```
 4. **Link the Configuration File**
@@ -38,6 +39,8 @@
 
 1. **Clone the Project Repository**
    ```sh
+   exit
+   cd
    git clone <ssh-clone-url>
    ```
 2. **Navigate to the Project Directory**
@@ -80,8 +83,26 @@
    sudo systemctl restart nginx
    ```
 
+
+10. **SSL Certificate**
+   ```sh
+   sudo su
+   certbot --nginx
+   Enter your email :
+   Type : Y
+   Type : Y
+   Select your domains by typing number 1,2,3
+   and make sure you get 
+   Successfully 
+   Open Broswer and check domain and check ssl certificate 
+
+
+   ```
+
+
 8. **Start the Project**
    ```sh
+   cd
    cd repoName
    cd server
    pm2 start app.js --name "Project Name and Port"
