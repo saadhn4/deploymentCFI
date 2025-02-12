@@ -102,6 +102,7 @@
 
 8. **Start the Project**
    ```sh
+   exit
    cd
    cd repoName
    cd server
