@@ -11,7 +11,7 @@
 5. Check updates using [dnschecker.org](https://dnschecker.org).
 
 
-## 2. HTML Setup & Project Deployment
+## 2. React Setup & Project Deployment
 
 1. **Clone the Project Repository**
    ```sh
