@@ -96,13 +96,14 @@
    ```
 
 ## 11. Connect Cloud Server via SSH on WSL/Windows
-
+ (We have to copy windows .ssh public key and paste in cloud .ssh in a file name called authorized_keys )
 
 ## Step 1: Check for `.ssh` Folder in Windows
+()
 1. Open **Command Prompt (cmd)**.
 2. Type the following command to navigate to the SSH directory:
    ```sh
-   cd %USERPROFILE%\.ssh
+   cd .ssh
    ```
 3. If the folder does not exist, create SSH keys:
    ```sh
