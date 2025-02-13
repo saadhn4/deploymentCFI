@@ -51,7 +51,7 @@
 server {
     listen 80;
     listen [::]:80;
-    server_name suhail.com www.suhail.com;
+    server_name suhail.com;
 
     location / {
         proxy_pass http://localhost:5000;
