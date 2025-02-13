@@ -1,6 +1,4 @@
 
-## Second Time Adding Domain or Project
-
 ## 1. Add Domain and Update DNS
 
 1. Open **DigitalOcean** → **Networking** → **Add Domain**.
@@ -46,15 +44,33 @@
 -  If you are able to access on browser then stop the server 
    
 
-5. **Generate Configuration Using [nginx.suhail.app](https://nginx.suhail.app)**
+  5. **Generate Configuration Using [nginx.suhail.app](https://nginx.suhail.app)**
    - Add your domain and port.
-    ![DNS Settings](https://upload.suhail.app/uploads/s5SCNnY.png)
 
-6. **Edit the Nginx Configuration File**
+```nginx
+server {
+    listen 80;
+    listen [::]:80;
+    server_name suhail.com www.suhail.com;
+
+    location / {
+        proxy_pass http://localhost:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+
+```
+
+
+5. **Edit the Nginx Configuration File & Paste in it**
    ```sh
    sudo nano /etc/nginx/sites-available/domains
    ```
-
 
 7. **Test and Restart Nginx**
    ```sh

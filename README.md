@@ -212,11 +212,24 @@ sudo apt-get autoremove -y
    ```
 
 
-## 15. Add Domain and Update DNS
+## 14. Nginx Setup (One-Time Configuration)
 
-1. Open **DigitalOcean** → **Networking** → **Add Domain**.
-2. Add your domain and note the **NS records**.
-3. Add two A records (`www` and `@`) pointing to your **Cloud IP**.  
-   ![DNS Settings](https://upload.suhail.app/uploads/-9AsXUE.png)
-4. Update your **Domain DNS Settings** with the cloud NS records.
-5. Check updates using [dnschecker.org](https://dnschecker.org).
+1. **Switch to Root User**
+   ```sh
+   sudo su
+   ```
+2. **Remove Default Nginx Configuration**
+   ```sh
+   cd /etc/nginx/sites-enabled/
+   sudo rm -rf *
+   ```
+3. **Create a New Nginx Configuration File**
+   ```sh
+   cd /etc/nginx/sites-available
+   sudo rm -rf *
+   sudo touch domains
+   ```
+4. **Link the Configuration File**
+   ```sh
+   sudo ln -s /etc/nginx/sites-available/domains /etc/nginx/sites-enabled
+   ```
