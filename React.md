@@ -1,6 +1,4 @@
 
-## Second Time Adding Domain or Project
-
 ## 1. Add Domain and Update DNS
 
 1. Open **DigitalOcean** → **Networking** → **Add Domain**.
@@ -34,7 +32,7 @@
    npm i
    npm start
    ```
-6. **Open Browser and Check**
+4. **Open Browser and Check**
    - Use your cloud IP and port to verify:
      ```
      http://<cloud-ip>:<port>
@@ -43,10 +41,31 @@
 
 -  If you are able to access on browser then stop the server 
    
-
-5. **Generate Configuration Using [nginx.suhail.app](https://nginx.suhail.app)**
+   
+  5. **Generate Configuration Using [nginx.suhail.app](https://nginx.suhail.app)**
    - Add your domain and port.
-6. **Edit the Nginx Configuration File**
+
+```nginx
+server {
+    listen 80;
+    listen [::]:80;
+    server_name suhail.com www.suhail.com;
+
+    location / {
+        proxy_pass http://localhost:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+
+```
+
+
+5. **Edit the Nginx Configuration File & Paste in it**
    ```sh
    sudo nano /etc/nginx/sites-available/domains
    ```
@@ -57,6 +76,9 @@
    sudo nginx -t
    sudo systemctl restart nginx
    ```
+
+
+## Before Generating SSL Certificates check A Record and NS Record are Updated from dnschecker.org (A and NS Record)
 
 
 10. **SSL Certificate**
@@ -96,3 +118,4 @@
    pm2 logs id or name
 
    ```
+
